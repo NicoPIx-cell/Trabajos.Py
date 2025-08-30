@@ -1,0 +1,11 @@
+
+<h1>Cambiar Precio - {{ computadora.marca }} {{ computadora.modelo }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Precio actual: ${{ computadora.precio|default:"No definido" }}</label><br>
+    <input type="number" name="precio" value="{{ computadora.precio }}" min="0" required>
+    <button type="submit">Actualizar Precio</button>
+</form>
+
+<a href={% url 'listado_de_computadora' %}>Volver al listado</a>

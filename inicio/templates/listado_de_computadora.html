@@ -15,9 +15,12 @@
         {% for computadora in computadora_buscadas %}
             <li>
                 {{computadora}}
+                <strong>Precio: ${{ computadora.precio|default:"No definido" }}</strong>
+                <br>
                 <a href={% url "computadora_detalle" computadora.id %}>Detalle</a>
                 <a href={% url "computadora_borrar" computadora.id %}>Borrar</a>
                 <a href={% url "computadora_actualizar" computadora.id %}>Actualizar</a>
+                <a href={% url "editar_precio" computadora.id %}>Cambiar Precio</a>
             </li>
         {% endfor %}
     </ul>

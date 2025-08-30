@@ -20,7 +20,7 @@ def crear_computadora(request):
         if formulario.is_valid():
             info = formulario.cleaned_data
             
-            computadora = Computadora(marca=info.get('marca'), modelo=info.get('modelo'), imagen=info.get("imagen"))
+            computadora = Computadora(marca=info.get('marca'), modelo=info.get('modelo'), imagen=info.get("imagen"), precio=info.get("precio"))
             computadora.save()
             
             return redirect("listado_de_computadora")
@@ -59,3 +59,16 @@ class ComputadoraActualizar(LoginRequiredMixin, UpdateView):
 
 def acerca_de_mi(request):
     return render(request, "acerca_de_mi.html")
+
+@login_required
+def editar_precio(request, id_computadora):
+    computadora = Computadora.objects.get(id=id_computadora)
+    
+    if request.method == 'POST':
+        nuevo_precio = request.POST.get('precio')
+        if nuevo_precio:
+            computadora.precio = int(nuevo_precio)
+            computadora.save()
+            return redirect('listado_de_computadora')
+    
+    return render(request, 'editar_precio.html', {'computadora': computadora})

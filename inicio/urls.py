@@ -1,5 +1,5 @@
 from django.urls import path
-from inicio.views import inicio, crear_computadora, listado_de_computadora, computadora_detalle, ComputadoraBorrar, ComputadoraActualizar
+from inicio.views import inicio, crear_computadora, listado_de_computadora, computadora_detalle, ComputadoraBorrar, ComputadoraActualizar, editar_precio
 from inicio import views
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('computadora/<int:id_computadora>/', computadora_detalle, name='computadora_detalle'),
     path('computadora/<int:pk>/borrar/', ComputadoraBorrar.as_view(), name='computadora_borrar'),
     path('computadora/<int:pk>/actualizar/', ComputadoraActualizar.as_view(), name='computadora_actualizar'),
+    path('editar-precio/<int:id_computadora>/', editar_precio, name='editar_precio'),
 ]
