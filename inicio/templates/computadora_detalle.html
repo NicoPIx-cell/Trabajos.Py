@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block texto_h1 %} Computadora: {{computadora}} {% endblock texto_h1 %}
+
+{% block contenido %}
+
+<ul>
+    <li>Marca: {{computadora.marca}}</li>
+    <li>Modelo: {{computadora.modelo}}</li>
+    <li>Imagen: <img src={{computadora.imagen.url}} alt="Imagen de la computadora" height="300px"></li>
+</ul>
+
+{% endblock contenido %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block texto_h1 %} Listado de Computadoras{% endblock texto_h1 %}
+
+{% block contenido %}
+
+<form action="" method="GET">
+    
+    {{formulario}}
+    
+    <input type="submit" value="Buscar">
+</form>
+
+{% if computadora_buscadas %}
+    <ul>
+        {% for computadora in computadora_buscadas %}
+            <li>
+                {{computadora}}
+                <a href={% url "computadora_detalle" computadora.id %}>Detalle</a>
+                <a href={% url "computadora_borrar" computadora.id %}>Borrar</a>
+                <a href={% url "computadora_actualizar" computadora.id %}>Actualizar</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay datos.</p>
+{% endif %}
+
+{% endblock contenido %}

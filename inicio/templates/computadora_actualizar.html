@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block texto_h1 %} Actualizar Computadora{% endblock texto_h1 %}
+
+{% block contenido %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {{form}}
+    
+    <input type="submit" value="Actualizar">
+    {% comment %} <button>Crear</button> {% endcomment %}
+</form>
+
+{% endblock contenido %}
